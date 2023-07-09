@@ -1,0 +1,27 @@
+<div class="movies-list">
+  <div class="movie" *ngFor="let movie of searchedMoviesList">
+    <a class="movie__image" (click)="getMovieData(movie.id)">
+      <img
+        [src]="
+          movie.poster_path
+            ? 'https://image.tmdb.org/t/p/w200/' + movie.poster_path
+            : 'https://via.placeholder.com/94x141?text=Poster+Image'
+        "
+        alt="Movie Poster Image"
+      />
+    </a>
+    <div class="movie__info">
+      <div class="movie__wrapper">
+        <a class="movie__title" (click)="getMovieData(movie.id)">
+          {{ movie.title }}
+        </a>
+        <span class="movie__date">
+          {{ movie.release_date | date : "MMMM d, yyyy" }}
+        </span>
+      </div>
+      <p class="movie__overview">
+        {{ movie.overview }}
+      </p>
+    </div>
+  </div>
+</div>

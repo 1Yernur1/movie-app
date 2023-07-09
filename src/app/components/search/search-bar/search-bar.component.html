@@ -1,0 +1,15 @@
+<div class="search-bar">
+  <form class="form" (submit)="search()">
+    <i class="fa-solid fa-magnifying-glass form__find"></i>
+    <input
+      class="form__input"
+      type="text"
+      [(ngModel)]="searchQuery"
+      name="query"
+      placeholder="Search for a movie, tv show..."
+      (click)="onInputFocus()"
+      (blur)="onInputFocus()"
+    />
+    <i class="fa-solid fa-xmark form__close" *ngIf="isInputFocused && searchQuery"></i>
+  </form>
+</div>

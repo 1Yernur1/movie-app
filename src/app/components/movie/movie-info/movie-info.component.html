@@ -1,0 +1,72 @@
+<div
+  class="movie"
+  [style.backgroundImage]="
+    movie.backdrop_path
+      ? 'linear-gradient(to right, rgba(31.5, 31.5, 94.5, 1), rgba(31.5, 31.5, 94.5, 0.84) 50%, rgba(31.5, 31.5, 94.5, 0.84) 100%), url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/' +
+        movie.backdrop_path +
+        ')'
+      : 'linear-gradient(to right, rgba(31.5, 31.5, 94.5, 1), rgba(31.5, 31.5, 94.5, 0.84) 50%, rgba(31.5, 31.5, 94.5, 0.84) 100%), url(https://via.placeholder.com/1920x800)'
+  "
+>
+  <div class="movie__left">
+    <img
+      class="movie__left__image"
+      [src]="
+        movie.poster_path
+          ? 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' +
+            movie.poster_path
+          : 'https://via.placeholder.com/300x450?text=Poster+Image'
+      "
+      [alt]="movie.title"
+    />
+  </div>
+  <div class="movie__right">
+    <div class="movie__right__top">
+      <h2 class="movie__right__top__header">
+        <a class="movie__right__top__header__title">{{ movie.title }}&nbsp;</a>
+        <span
+          class="movie__right__top__header__release-year"
+          *ngIf="movie.release_date"
+          >({{ movie.release_date | date : "yyyy" }})</span
+        >
+      </h2>
+      <div class="movie__right__top__facts">
+        <span
+          *ngIf="releaseDetails.certification"
+          class="movie__right__top__facts__certification"
+          >{{ releaseDetails.certification }}</span
+        >
+        <span class="movie__right__top__facts__release-date"
+          >&nbsp;{{
+            releaseDetails.releaseDate | date : "MM/dd/yyyy"
+          }}&nbsp;</span
+        >
+        <span
+          class="movie__right__top__facts__country-code"
+          *ngIf="releaseDetails.countryCode"
+          >({{ releaseDetails.countryCode }})&nbsp;</span
+        >
+        <span class="movie__right__top__facts__genres">
+          <a
+            class="movie__right__top__facts__genres-item"
+            *ngFor="let genre of movie.genres; let last = last"
+            >{{ genre.name }}<ng-container *ngIf="!last">,</ng-container>
+          </a>
+        </span>
+        <span class="movie__right__top__facts__runtime">{{
+          movie.runtime | duration
+        }}</span>
+      </div>
+    </div>
+    <div class="movie__right__middle">
+      <div class="movie__right__middle__score">
+        <div class="movie__right__middle__score__number">
+          {{ movie.vote_average / 10 | percent }}
+        </div>
+      </div>
+      <div class="movie__right__middle__icons">
+      </div>
+      <div class="movie__right__middle__trailer"></div>
+    </div>
+  </div>
+</div>

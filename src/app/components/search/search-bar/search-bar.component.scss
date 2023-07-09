@@ -1,0 +1,39 @@
+.search-bar {
+  border-bottom: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
+  padding: 0 4rem;
+  .form {
+    max-width: 144rem;
+    margin: 0 auto;
+    position: relative;
+    font-size: 1.6rem;
+
+    &__find {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+    }
+
+    &__input {
+      width: 100%;
+      height: 4.4rem;
+      padding: 0.6rem 1rem 0.6rem 3rem;
+      color: #acacac;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      color: #acacac;
+
+    }
+  }
+}

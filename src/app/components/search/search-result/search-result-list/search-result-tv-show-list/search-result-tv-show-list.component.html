@@ -1,0 +1,27 @@
+<div class="tv-shows-list">
+  <div class="tv-show" *ngFor="let tvShow of searchedTVShowsList">
+    <a class="tv-show__image" (click)="getTVShowData(tvShow.id)">
+      <img
+        [src]="
+          tvShow.poster_path
+            ? 'https://image.tmdb.org/t/p/w200/' + tvShow.poster_path
+            : 'https://via.placeholder.com/94x141?text=Poster+Image'
+        "
+        alt="Movie Poster Image"
+      />
+    </a>
+    <div class="tv-show__info">
+      <div class="tv-show__wrapper">
+        <a class="tv-show__title" (click)="getTVShowData(tvShow.id)">
+          {{ tvShow.name }}
+        </a>
+        <span class="tv-show__date">
+          {{ tvShow.first_air_date | date : "MMMM d, yyyy" }}
+        </span>
+      </div>
+      <p class="tv-show__overview">
+        {{ tvShow.overview }}
+      </p>
+    </div>
+  </div>
+</div>

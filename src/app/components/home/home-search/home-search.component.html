@@ -1,0 +1,10 @@
+<form class="form" (submit)="search()">
+  <input
+    class="form__input"
+    type="text"
+    [(ngModel)]="searchQuery"
+    placeholder="Search for a movie, tv show..."
+    name="query"
+  />
+  <button class="form__button" type="submit">Search</button>
+</form>
